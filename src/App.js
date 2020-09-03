@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import HabitList from './components/habitList/HabitList';
+
 const App = function () {
   const [habits, setHabits] = useState(null);
 
@@ -36,31 +38,15 @@ const App = function () {
       });
   }
   return (
-    <>
-      <h1>My Project</h1>
-      {habits === null ? (
-        <p>Loading...</p>
-      ) : habits.length === 0 ? (
-        <p>No habit available</p>
-      ) : (
-        <>
-          <h2>Available habits</h2>
-          <ol>
-            {habits.data.map((habit, index) => (
-              <li key={index}>
-                newHabit: {habit.newHabit} - oldHabit: {habit.oldHabit}
-              </li>
-            ))}
-          </ol>
-        </>
-      )}
+    <div>
+      <HabitList habits={habits} />
 
       <form onSubmit={submitForm}>
         <input onChange={(e) => setNewHabit(e.target.value)} type='text' placeholder='Enter your new habit' />
         <input onChange={(e) => setOldHabit(e.target.value)} type='text' placeholder='Enter your old habit' />
         <input type='submit' />
       </form>
-    </>
+    </div>
   );
 };
 export default App;
