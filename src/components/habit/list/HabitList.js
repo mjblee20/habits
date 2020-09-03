@@ -1,11 +1,9 @@
 import React from 'react';
 
-import HabitForm from './form/HabitForm';
-
-function Habit(props) {
+function HabitList(props) {
   return (
     <div>
-      <h1>My Project</h1>
+      <h1>ListBit</h1>
       {props.habits === null ? (
         <p>Loading...</p>
       ) : props.habits.length === 0 ? (
@@ -14,6 +12,7 @@ function Habit(props) {
         <>
           <h2>Available habits</h2>
           <ol>
+            {console.log(props.habits)}
             {props.habits.data.map((habit, index) => (
               <li key={index}>
                 newHabit: {habit.newHabit} - oldHabit: {habit.oldHabit}
@@ -22,10 +21,8 @@ function Habit(props) {
           </ol>
         </>
       )}
-
-      <HabitForm />
     </div>
   );
 }
 
-export default Habit;
+export default HabitList;

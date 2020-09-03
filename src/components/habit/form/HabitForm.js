@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import './HabitForm.css';
+
 function Form() {
   const [newHabit, setNewHabit] = useState('');
   const [oldHabit, setOldHabit] = useState('');
@@ -29,11 +31,14 @@ function Form() {
   }
 
   return (
-    <form onSubmit={submitForm}>
-      <input onChange={(e) => setNewHabit(e.target.value)} type='text' placeholder='Enter your new habit' />
-      <input onChange={(e) => setOldHabit(e.target.value)} type='text' placeholder='Enter your old habit' />
-      <input type='submit' />
-    </form>
+    <div>
+      <h1>Add New Habit</h1>
+      <form onSubmit={submitForm}>
+        <input onChange={(e) => setNewHabit(e.target.value)} type='text' placeholder='Enter your new habit' />
+        <input onChange={(e) => setOldHabit(e.target.value)} type='text' placeholder='Enter your old habit' />
+        <input type='submit' />
+      </form>
+    </div>
   );
 }
 
