@@ -1,6 +1,8 @@
 import React from 'react';
 
-function habitList(props) {
+import HabitForm from './form/HabitForm';
+
+function Habit(props) {
   return (
     <div>
       <h1>My Project</h1>
@@ -20,8 +22,10 @@ function habitList(props) {
           </ol>
         </>
       )}
+
+      <HabitForm />
     </div>
   );
 }
 
-export default habitList;
+export default Habit;

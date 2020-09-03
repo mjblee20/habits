@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function form() {
+function Form() {
   const [newHabit, setNewHabit] = useState('');
   const [oldHabit, setOldHabit] = useState('');
 
@@ -37,4 +37,4 @@ function form() {
   );
 }
 
-export default form;
+export default Form;
