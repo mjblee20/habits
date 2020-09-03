@@ -16,8 +16,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const habits = require('./api/habits-api');
-app.use('/api/habits', habits);
+const users = require('/api/users');
+app.use('/api/users', users);
 
 app.use(express.static(path.join(__dirname, '../build')));
 app.get('*', (req, res) => {

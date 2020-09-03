@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const habitSchema = new Schema({
-  oldHabit: {
+const userSchema = new Schema({
+  name: {
     type: String,
     required: true,
   },
-  newHabit: {
+  email: {
     type: String,
     required: true,
   },
 });
-
-module.exports = mongoose.model('Habit', habitSchema);
+module.exports = mongoose.model('User', userSchema, 'users');
