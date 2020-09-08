@@ -31,7 +31,7 @@ function Form() {
   }
 
   return (
-    <div>
+    <div className='habit-form-container'>
       <h1>Add New Habit</h1>
       <form onSubmit={submitForm}>
         <input onChange={(e) => setNewHabit(e.target.value)} type='text' placeholder='Enter your new habit' />

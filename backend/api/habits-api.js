@@ -3,12 +3,14 @@ const router = express.Router();
 
 const Habit = require('../models/habit');
 
+// READ
 router.get('/', (req, res) => {
   Habit.find()
     .then((habits) => res.json(habits))
     .catch((err) => console.log(err));
 });
 
+// CREATE
 router.post('/', (req, res) => {
   const { newHabit, oldHabit } = req.body;
   const habitBuild = new Habit({
@@ -29,5 +31,9 @@ router.post('/', (req, res) => {
       })
     );
 });
+
+// UPDATE
+
+// DELETE
 
 module.exports = router;

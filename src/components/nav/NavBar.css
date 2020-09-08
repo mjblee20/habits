@@ -1,0 +1,25 @@
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100px;
+  background: #2a2d34;
+  padding-top: 15px;
+}
+
+.nav-list {
+  margin-top: 30px;
+}
+
+.nav-icons {
+  box-sizing: border-box;
+  margin: 15px;
+  height: 70px;
+  width: 70px;
+  background: #41444c;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

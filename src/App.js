@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 
+import NavBar from './components/nav/NavBar';
 import Habit from './components/habit/Habit';
+import Todo from './components/todo/Todo';
+
+import './App.css';
 
 const App = function () {
-  const [habits, setHabits] = useState(null);
-
-  useEffect(() => {
-    axios
-      .get('/api/habits')
-      .then((habits) => setHabits(habits))
-      .catch((err) => console.log(err));
-  }, []);
-
   return (
-    <div>
-      <Habit habits={habits} />
-    </div>
+    <>
+      <NavBar />
+      <div className='main-body'>
+        <Habit />
+        <Todo />
+      </div>
+      {/*  */}
+    </>
   );
 };
 

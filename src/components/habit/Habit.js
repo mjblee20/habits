@@ -1,15 +1,26 @@
 import React from 'react';
 
-import HabitForm from './form/HabitForm';
-import HabitList from './list/HabitList';
+import HabitForm from './HabitForm';
+import HabitList from './HabitList';
 
-function Habit(props) {
+import './Habit.css';
+
+function Habit() {
   return (
-    <div>
-      <h1> Habit Builder</h1>
-      <HabitList habits={props.habits} />
+    <div className='habit-container'>
+      <div className='habit-title-container'>
+        <h1 className='habit-title'> Habit Builder</h1>
+      </div>
 
-      <HabitForm />
+      <div className='habit-body-container'>
+        {/* TODO: Habit Score List */}
+        {/* TODO: Habit implementation intentions/goals */}
+
+        {/* TODO: Little pop tips on making better goals for changing a habit */}
+        <HabitList />
+
+        <HabitForm />
+      </div>
     </div>
   );
 }
