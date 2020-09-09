@@ -35,18 +35,19 @@ router.route('/').post((req, res) => {
 });
 
 // UPDATE
-// router.put
+router.route('/update').put((req, res) => {
+  res.send('put');
+});
 
 // DELETE
-router.route('/delete').post((req, res, next) => {
-  console.log(req.body.id);
-  // Todo.findByIdAndDelete(req.body.id, (err) => {
-  //   if (!err) {
-  //     console.log('Remove Success');
-  //   } else {
-  //     console.log(err);
-  //   }
-  // });
+router.route('/delete/:id').delete((req, res) => {
+  Todo.findByIdAndDelete(req.params.id, (err) => {
+    if (!err) {
+      res.json({ msg: 'success' });
+    } else {
+      console.log(err);
+    }
+  });
 });
 
 module.exports = router;

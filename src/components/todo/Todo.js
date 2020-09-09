@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import './Todo.css';
+
 function Todo() {
   const [taskList, setTaskList] = useState(null);
   const [task, setTask] = useState('');
@@ -34,12 +36,8 @@ function Todo() {
   };
 
   const removeTask = (e) => {
-    // e.preventDefault();
-    console.log(e.target.value);
     axios
-      .delete('/api/todos/delete-task', {
-        id: e.target.value,
-      })
+      .delete('/api/todos/delete/' + e.target.value)
       .then(function () {
         alert('task successfully removed');
         window.location.reload();
@@ -50,32 +48,41 @@ function Todo() {
   };
 
   return (
-    <div>
-      <h1>To-Do List</h1>
-      {taskList === null ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {taskList.data.map((task, index) => {
-            return (
-              <li key={index}>
-                <span>{task.task}</span>
-                <span>{task.priority}</span>
-                {/* TODO: when clicked remove item */}
-                <button type='submit' name='btn' value={task._id} onClick={removeTask}>
-                  X
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+    <div className='todo-container'>
+      <div className='todo-title-container'>
+        <h1>To-Do List</h1>
+      </div>
 
-      <form onSubmit={addTask}>
-        <input onChange={(e) => setTask(e.target.value)} type='text' placeholder='New Task' />
-        <input onChange={(e) => setPrior(e.target.value)} type='number' min='1' max='9' placeholder='5' />
-        <input type='submit' />
-      </form>
+      <div className='todo-body-container'>
+        <div className='task-list-container'>
+          {taskList === null ? (
+            <p>Loading...</p>
+          ) : (
+            <ul>
+              {taskList.data.map((task, index) => {
+                return (
+                  <li key={index}>
+                    <span>{task.task}</span>
+                    <span>{task.priority}</span>
+                    {/* TODO: when clicked remove item */}
+                    <button type='submit' name='btn' value={task._id} onClick={removeTask}>
+                      X
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
+
+        <div className='task-form-container'>
+          <form onSubmit={addTask}>
+            <input onChange={(e) => setTask(e.target.value)} type='text' placeholder='New Task' />
+            <input onChange={(e) => setPrior(e.target.value)} type='number' min='1' max='9' placeholder='5' />
+            <input type='submit' />
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

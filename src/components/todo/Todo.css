@@ -1,0 +1,26 @@
+.todo-container {
+  display: grid;
+  grid-template-columns: 100px auto 100px;
+  grid-template-rows: 100px auto;
+  padding: 5em;
+  gap: 30px;
+}
+
+.todo-title-container {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(355, 355, 355, 0.8);
+  border-radius: 20px;
+}
+
+.todo-body-container {
+  grid-column: 2;
+  grid-row: 2;
+  border-radius: 20px;
+  background: rgba(355, 355, 355, 0.8);
+  padding: 2em;
+  min-height: 300px;
+}
