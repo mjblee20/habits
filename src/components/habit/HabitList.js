@@ -23,9 +23,8 @@ function HabitList() {
         <>
           <h2>Current Habit List</h2>
           <ol>
-            {console.log(habits)}
             {habits.data.map((habit, index) => (
-              <li key={index}>
+              <li key={index} id={habit.id}>
                 newHabit: {habit.newHabit} - oldHabit: {habit.oldHabit}
               </li>
             ))}

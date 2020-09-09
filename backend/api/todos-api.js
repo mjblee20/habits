@@ -4,14 +4,14 @@ const router = express.Router();
 const Todo = require('../models/todo');
 
 // READ
-router.get('/', (req, res) => {
+router.route('/').get((req, res) => {
   Todo.find()
     .then((tasks) => res.json(tasks))
     .catch((err) => console.log(err));
 });
 
 // CREATE
-router.post('/', (req, res) => {
+router.route('/').post((req, res) => {
   const { task, priority } = req.body;
 
   const todoItem = new Todo({
@@ -35,7 +35,18 @@ router.post('/', (req, res) => {
 });
 
 // UPDATE
+// router.put
 
 // DELETE
+router.route('/delete').post((req, res, next) => {
+  console.log(req.body.id);
+  // Todo.findByIdAndDelete(req.body.id, (err) => {
+  //   if (!err) {
+  //     console.log('Remove Success');
+  //   } else {
+  //     console.log(err);
+  //   }
+  // });
+});
 
 module.exports = router;

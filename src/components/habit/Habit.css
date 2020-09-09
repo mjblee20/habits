@@ -7,8 +7,6 @@
 }
 
 .habit-title-container {
-  display: inline-block;
-  width: 300px;
   grid-column: 2;
   grid-row: 1;
   display: flex;
