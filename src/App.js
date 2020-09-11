@@ -1,21 +1,23 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import NavBar from './components/nav/NavBar';
-import Habit from './components/habit/Habit';
-import Todo from './components/todo/Todo';
-
+import Habit from './pages/Habit';
+import Todo from './pages/Todo';
+import Home from './pages/Home';
 import './App.css';
 
 const App = function () {
   return (
-    <>
+    <Router>
       <NavBar />
-      <div className='main-body'>
-        <Habit />
-        <Todo />
-      </div>
-      {/*  */}
-    </>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/habit' component={Habit} />
+        <Route path='/todo' component={Todo} />
+        <Redirect to='/' />
+      </Switch>
+    </Router>
   );
 };
 

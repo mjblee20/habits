@@ -7,19 +7,18 @@ function Form() {
   const [newHabit, setNewHabit] = useState('');
   const [oldHabit, setOldHabit] = useState('');
 
-  function submitForm() {
+  const submitForm = (e) => {
+    e.preventDefault();
     if (newHabit === '') {
-      alert('Please fill the username field');
-      return;
+      alert('Please fill the newHabit field');
     }
     if (oldHabit === '') {
-      alert('Please fill the email field');
-      return;
+      alert('Please fill the oldHabit field');
     }
     axios
-      .post('/api/habits', {
-        newHabit: newHabit,
+      .post('https://habit-server.herokuapp.com/api/habits/', {
         oldHabit: oldHabit,
+        newHabit: newHabit,
       })
       .then(function () {
         alert('Habit created successfully');
@@ -28,7 +27,7 @@ function Form() {
       .catch(function () {
         alert('Could not creat habit. Please try again');
       });
-  }
+  };
 
   return (
     <div className='habit-form-container'>

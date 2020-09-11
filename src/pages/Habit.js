@@ -1,7 +1,7 @@
 import React from 'react';
 
-import HabitForm from './HabitForm';
-import HabitList from './HabitList';
+import HabitForm from '../components/habit/HabitForm';
+import HabitList from '../components/habit/HabitList';
 
 import './Habit.css';
 

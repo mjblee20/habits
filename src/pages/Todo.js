@@ -6,11 +6,10 @@ import './Todo.css';
 function Todo() {
   const [taskList, setTaskList] = useState(null);
   const [task, setTask] = useState('');
-  const [priority, setPrior] = useState(5);
 
   useEffect(() => {
     axios
-      .get('/api/todos')
+      .get('https://habit-server.herokuapp.com/api/todos/')
       .then((tasks) => {
         console.log(tasks);
         setTaskList(tasks);
@@ -20,30 +19,41 @@ function Todo() {
       });
   }, []);
 
-  const addTask = () => {
+  const addTask = (e) => {
+    e.preventDefault();
     axios
-      .post('/api/todos', {
+      .post('https://habit-server.herokuapp.com/api/todos/', {
         task: task,
-        priority: priority,
       })
-      .then(function () {
-        alert('New task created successfully');
+      .then(function (response) {
+        console.log(response);
         window.location.reload();
       })
-      .catch(function () {
-        alert('Could not creat task. Please try again');
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const updateTask = (e) => {
+    axios
+      .put('https://habit-server.herokuapp.com/api/todos/update/' + e.target.value)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
   const removeTask = (e) => {
     axios
-      .delete('/api/todos/delete/' + e.target.value)
-      .then(function () {
-        alert('task successfully removed');
+      .delete('https://habit-server.herokuapp.com/api/todos/delete/' + e.target.value)
+      .then(function (response) {
+        console.log(response);
         window.location.reload();
       })
-      .catch(function () {
-        alert('could not remove task');
+      .catch(function (error) {
+        console.log(error);
       });
   };
 
@@ -62,10 +72,12 @@ function Todo() {
               {taskList.data.map((task, index) => {
                 return (
                   <li key={index}>
+                    {/* <input type='text' onChange={(e) => setTask(e.target.value)} value={task.task} /> */}
                     <span>{task.task}</span>
-                    <span>{task.priority}</span>
-                    {/* TODO: when clicked remove item */}
-                    <button type='submit' name='btn' value={task._id} onClick={removeTask}>
+                    {/* <button type='submit' name='update-btn' value={task._id} onClick={updateTask}>
+                      Edit
+                    </button> */}
+                    <button type='submit' name='delete-btn' value={task._id} onClick={removeTask}>
                       X
                     </button>
                   </li>
@@ -78,7 +90,6 @@ function Todo() {
         <div className='task-form-container'>
           <form onSubmit={addTask}>
             <input onChange={(e) => setTask(e.target.value)} type='text' placeholder='New Task' />
-            <input onChange={(e) => setPrior(e.target.value)} type='number' min='1' max='9' placeholder='5' />
             <input type='submit' />
           </form>
         </div>

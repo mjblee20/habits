@@ -8,7 +8,7 @@ function HabitList() {
 
   useEffect(() => {
     axios
-      .get('/api/habits')
+      .get('https://habit-server.herokuapp.com/api/habits/')
       .then((habits) => setHabits(habits))
       .catch((err) => console.log(err));
   }, []);
@@ -17,7 +17,7 @@ function HabitList() {
       <h1>List of Habits In Progress</h1>
       {habits === null ? (
         <p>Loading...</p>
-      ) : habits.length === 0 ? (
+      ) : habits.data.length === 0 ? (
         <p>No habit available</p>
       ) : (
         <>
@@ -25,7 +25,7 @@ function HabitList() {
           <ol>
             {habits.data.map((habit, index) => (
               <li key={index} id={habit.id}>
-                newHabit: {habit.newHabit} - oldHabit: {habit.oldHabit}
+                oldHabit: {habit.oldHabit} - newHabit: {habit.newHabit}
               </li>
             ))}
           </ol>
