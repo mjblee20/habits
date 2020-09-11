@@ -12,10 +12,10 @@ const App = function () {
     <Router>
       <NavBar />
       <Switch>
-        <Route exact path='/' component={Home} />
+        <Route exact path='/habits' component={Home} />
         <Route path='/habit' component={Habit} />
         <Route path='/todo' component={Todo} />
-        <Redirect to='/' />
+        <Redirect to='/habits' />
       </Switch>
     </Router>
   );
