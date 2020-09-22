@@ -17,7 +17,7 @@ function NavBar() {
             <NavLink to='/'>A</NavLink>
           </li>
           <li className='nav-icons'>
-            <NavLink to='/habit'>B</NavLink>
+            <NavLink to='/habitbuilder'>B</NavLink>
           </li>
           <li className='nav-icons'>
             <NavLink to='/todo'>C</NavLink>

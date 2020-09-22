@@ -1,8 +1,5 @@
 import React from 'react';
 
-import Habit from './Habit';
-import Todo from './Todo';
-
 function Home() {
   return (
     <div className='home-container'>
